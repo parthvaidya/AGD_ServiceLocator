@@ -11,14 +11,14 @@ namespace ServiceLocator.UI
         private List<MonkeyCellController> monkeyCellControllers;
         private PlayerService playerService;
 
-        public MonkeySelectionUIController(Transform cellContainer, MonkeyCellView monkeyCellPrefab, List<MonkeyCellScriptableObject> monkeyCellScriptableObjects)
+        public MonkeySelectionUIController(PlayerService playerService, Transform cellContainer, MonkeyCellView monkeyCellPrefab, List<MonkeyCellScriptableObject> monkeyCellScriptableObjects)
         {
             this.cellContainer = cellContainer;
             monkeyCellControllers = new List<MonkeyCellController>();
 
             foreach (MonkeyCellScriptableObject monkeySO in monkeyCellScriptableObjects)
             {
-                MonkeyCellController monkeyCell = new MonkeyCellController(playerService,cellContainer, monkeyCellPrefab, monkeySO);
+                MonkeyCellController monkeyCell = new MonkeyCellController(playerService, cellContainer, monkeyCellPrefab, monkeySO);
                 monkeyCellControllers.Add(monkeyCell);
             }
         }

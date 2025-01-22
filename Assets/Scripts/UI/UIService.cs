@@ -39,13 +39,14 @@ namespace ServiceLocator.UI
 
         private WaveService waveService;
         private EventService eventService;
+        private PlayerService playerService;
 
 
         private void Start()
         {
-            monkeySelectionController = new MonkeySelectionUIController(cellContainer, monkeyCellPrefab, monkeyCellScriptableObjects);
+            
             MonkeySelectionPanel.SetActive(false);
-            monkeySelectionController.SetActive(false);
+            
 
             gameplayPanel.SetActive(false);
             levelSelectionPanel.SetActive(true);
@@ -63,9 +64,17 @@ namespace ServiceLocator.UI
 
             
             SubscribeToEvents();
+            InitializeMapSelectionUI();
         }
 
-        public void SubscribeToEvents() => eventService.OnMapSelected.AddListener(OnMapSelected);
+        private void InitializeMapSelectionUI()
+        {
+            monkeySelectionController = new MonkeySelectionUIController(playerService, cellContainer, monkeyCellPrefab, monkeyCellScriptableObjects );
+            monkeySelectionController.SetActive(false);
+        }
+
+
+            public void SubscribeToEvents() => eventService.OnMapSelected.AddListener(OnMapSelected);
 
         public void OnMapSelected(int mapID)
         {

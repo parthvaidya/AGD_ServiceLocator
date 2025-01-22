@@ -8,9 +8,9 @@ namespace ServiceLocator.UI
 {
     public class MonkeyCellController
     {
+        private PlayerService playerService;
         private MonkeyCellView monkeyCellView;
         private MonkeyCellScriptableObject monkeyCellSO;
-        private PlayerService playerService;
 
         public MonkeyCellController(PlayerService playerService, Transform cellContainer, MonkeyCellView monkeyCellPrefab, MonkeyCellScriptableObject monkeyCellScriptableObject)
         {
