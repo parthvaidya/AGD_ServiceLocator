@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using ServiceLocator.Main;
+using ServiceLocator.Events;
 
 namespace ServiceLocator.UI
 {
     public class MapButton : MonoBehaviour
     {
         [SerializeField] private int MapId;
+        private EventService eventService;
 
         private void Start() => GetComponent<Button>().onClick.AddListener(OnMapButtonClicked);
 
